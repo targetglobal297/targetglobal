@@ -128,13 +128,22 @@ export default function SiteHeader() {
   return (
     <header style={{ background: SLATE, padding: "12px 20px", position: "sticky", top: 0, zIndex: 30, boxShadow: "0 1px 0 rgba(255,255,255,.06)" }}>
       <div className="sh-row" style={{ maxWidth: 1200, margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 14 }}>
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: 9, flexShrink: 0 }}>
-          <div style={{ width: 32, height: 32, borderRadius: 8, background: RED, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-            <span style={{ color: "#fff", fontWeight: 900, fontSize: 13 }}>TG</span>
-          </div>
-          <div>
-            <div style={{ color: "#fff", fontWeight: 800, fontSize: 16, letterSpacing: "-.3px", lineHeight: 1.1 }}>TargetGlobal</div>
-            <div style={{ color: "rgba(255,255,255,.4)", fontSize: 9, fontWeight: 600, letterSpacing: "1px", textTransform: "uppercase" as const }}>Shop</div>
+        <Link href="/" style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+          <img
+            src="/logo-white.png"
+            alt="TargetGlobal"
+            style={{ height: 30, width: "auto" }}
+            onError={e => { (e.currentTarget as HTMLImageElement).style.display = "none"; (e.currentTarget.nextElementSibling as HTMLElement).style.display = "flex"; }}
+          />
+          {/* Fallback if the logo file is ever missing — hidden by default via CSS below */}
+          <div className="sh-logo-fallback" style={{ alignItems: "center", gap: 9 }}>
+            <div style={{ width: 32, height: 32, borderRadius: 8, background: RED, display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+              <span style={{ color: "#fff", fontWeight: 900, fontSize: 13 }}>TG</span>
+            </div>
+            <div>
+              <div style={{ color: "#fff", fontWeight: 800, fontSize: 16, letterSpacing: "-.3px", lineHeight: 1.1 }}>TargetGlobal</div>
+              <div style={{ color: "rgba(255,255,255,.4)", fontSize: 9, fontWeight: 600, letterSpacing: "1px", textTransform: "uppercase" as const }}>Shop</div>
+            </div>
           </div>
         </Link>
 
@@ -207,6 +216,7 @@ export default function SiteHeader() {
         .sh-desktop { display: flex; }
         .sh-burger { display: none; }
         .sh-mobile-panel { display: none; }
+        .sh-logo-fallback { display: none; }
         @media (max-width: 860px) {
           .sh-desktop { display: none !important; }
           .sh-burger { display: flex !important; align-items: center; justify-content: center; }
