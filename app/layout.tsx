@@ -2,7 +2,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Link from "next/link";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Fraunces } from "next/font/google";
 import SiteHeader from "@/components/SiteHeader";
 import { CATEGORIES } from "@/lib/marketplace";
 
@@ -13,9 +13,28 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+// Display serif for headings — pairs with Plus Jakarta Sans body text for a
+// more considered, editorial feel than one font doing everything.
+const fraunces = Fraunces({
+  subsets: ["latin"],
+  weight: ["500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-display",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "TargetGlobal — Shop",
   description: "Shop premium products from independent merchants worldwide.",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-96x96.png", sizes: "96x96", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
+  manifest: "/site.webmanifest",
 };
 
 export const viewport: Viewport = {
@@ -60,7 +79,7 @@ const FOOTER_COLUMNS = [
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={jakarta.variable}>
+    <html lang="en" className={`${jakarta.variable} ${fraunces.variable}`}>
       <body>
         <SiteHeader />
 
@@ -116,6 +135,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           *, *::before, *::after { box-sizing:border-box; }
           html, body { overflow-x:hidden; max-width:100vw; -webkit-text-size-adjust:100%; margin:0; padding:0; }
           body { font-family: var(--font-jakarta), "Plus Jakarta Sans", system-ui, -apple-system, sans-serif; }
+          h1, h2 { font-family: var(--font-display), Georgia, serif; }
           img, svg, video { max-width:100%; height:auto; }
           a { text-decoration:none; color:inherit; }
         `}</style>
