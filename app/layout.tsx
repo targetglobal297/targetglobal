@@ -98,12 +98,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             }}>
               {/* Brand blurb column */}
               <div style={{ gridColumn: "span 1" }}>
-                <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 10 }}>
-                  <div style={{ width: 26, height: 26, borderRadius: 7, background: "#dc2626", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
-                    <span style={{ color: "#fff", fontWeight: 900, fontSize: 11 }}>TG</span>
-                  </div>
-                  <span style={{ color: "#fff", fontWeight: 800, fontSize: 14 }}>TargetGlobal</span>
-                </div>
+                <Link href="/" style={{ display: "flex", alignItems: "center", marginBottom: 10 }}>
+                  <img src="/logo-white.png" alt="TargetGlobal" style={{ height: 22, width: "auto" }} />
+                </Link>
                 <p style={{ fontSize: 12, color: "rgba(255,255,255,.45)", lineHeight: 1.7 }}>
                   A global marketplace connecting independent merchants with shoppers worldwide.
                 </p>
