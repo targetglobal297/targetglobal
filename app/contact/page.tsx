@@ -1,7 +1,7 @@
 // app/contact/page.tsx
 
 const RED = "#dc2626";
-const SUPPORT_EMAIL = "support@targetglobal.org";
+const SUPPORT_EMAIL = "support@targetglobal.shop";
 
 export const metadata = {
   title: "Contact Us — TargetGlobal",
